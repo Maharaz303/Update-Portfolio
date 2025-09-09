@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Project Landing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #202352;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1a1c3a;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .container {
+      width: 90%;
+      margin: auto;
+      padding: 20px 0;
+    }
+    .intro {
+      background: #262b4d;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .intro h2 {
+      margin-top: 0;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #2d325c;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #ccc;
+    }
+    .buttons {
+      margin-top: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      margin: 3px;
+    }
+    .btn-live {
+      background: #00c16a;
+      color: #fff;
+    }
+    .btn-code {
+      border: 1px solid #ff4b5c;
+      color: #ff4b5c;
+    }
+    .pagination {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .pagination button {
+      background: #2d325c;
+      border: none;
+      padding: 8px 15px;
+      margin: 3px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .pagination button.active {
+      background: #00c16a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Project - Live Links</h1>
+  </header>
+
+  <div class="container">
+    <div class="intro">
+      <h2>Clean, responsive project landing</h2>
+      <p>Show your work with project cards that link to demos, source code, or pages. Replace placeholder links with your real URLs.</p>
+    </div>
+
+    <h2>Projects</h2>
+    <div class="projects" id="project-list">
+      <!-- Project cards injected by JS -->
+    </div>
+
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <script>
+    const projects = [
+      {title:"Education Online Training", desc:"An online education training website.", img:"https://cdn-icons-png.flaticon.com/512/3135/3135755.png"},
+      {title:"Furniture eCommerce", desc:"Modern Furniture eCommerce Website.", img:"https://cdn-icons-png.flaticon.com/512/3144/3144456.png"},
+      {title:"Landing Page Website", desc:"Business Landing Page Website.", img:"https://cdn-icons-png.flaticon.com/512/3135/3135715.png"},
+      {title:"Healthcare Website", desc:"Modern Healthcare Website.", img:"https://cdn-icons-png.flaticon.com/512/2966/2966486.png"},
+      {title:"Project Gamma", desc:"REST API + dashboard.", img:"https://cdn-icons-png.flaticon.com/512/1828/1828919.png"},
+      {title:"Project Beta", desc:"WordPress site redesign.", img:"https://cdn-icons-png.flaticon.com/512/919/919830.png"},
+      // add more projects...
+    ];
+
+    const perPage = 4;
+    let currentPage = 1;
+
+    function renderProjects() {
+      const start = (currentPage - 1) * perPage;
+      const end = start + perPage;
+      const list = document.getElementById("project-list");
+      list.innerHTML = "";
+
+      projects.slice(start, end).forEach(p => {
+        list.innerHTML += `
+          <div class="card">
+            <img src="${p.img}" alt="${p.title}">
+            <h3>${p.title}</h3>
+            <p>${p.desc}</p>
+            <div class="buttons">
+              <a href="#" class="btn btn-live">Live</a>
+              <a href="#" class="btn btn-code">Code</a>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function renderPagination() {
+      const totalPages = Math.ceil(projects.length / perPage);
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+      for (let i=1; i<=totalPages; i++) {
+        pagination.innerHTML += `<button class="${i===currentPage?'active':''}" onclick="goToPage(${i})">${i}</button>`;
+      }
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      renderProjects();
+      renderPagination();
+    }
+
+    renderProjects();
+    renderPagination();
+  </script>
+</body>
+</html>
