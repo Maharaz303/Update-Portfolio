@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Project</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #202352;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1a1c3a;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center; /* horizontal center */
+      text-align: center;
+      padding: 20px;
+    }
+
+  header img {
+    border-radius: 12px; /* rounded corners */
+  }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    /* Mobile Responsive */
+  @media (max-width: 600px) {
+    .header-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .header-text {
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .logo {
+      width: 100px;
+    }
+  }
+
+
+ footer {
+      background: #1a1c3a;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center; /* horizontal center */
+      text-align: center;
+      padding: 20px;
+    }
+
+  footer img {
+    border-radius: 12px; /* rounded corners */
+  }
+    footer h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+ 
+
+    .container {
+      width: 90%;
+      margin: auto;
+      padding: 20px 0;
+    }
+    .intro {
+      background: linear-gradient(145deg, #262b4d, #1b1e39);
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    }
+    .intro h2 {
+      margin-top: 0;
+    }
+
+    /* Category filter buttons */
+    .categories {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .categories button {
+      background: #2d325c;
+      border: 2px solid #00c16a;
+      color: #00c16a;
+      padding: 8px 16px;
+      margin: 5px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .categories button:hover {
+      background: #00c16a;
+      color: #fff;
+      transform: scale(1.05);
+    }
+    .categories button.active {
+      background: #00c16a;
+      color: #fff;
+      box-shadow: 0 0 12px #00ff99;
+    }
+
+    /* Project cards */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #2d325c;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+    }
+    .card img {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    /* Buttons inside cards */
+    .buttons {
+      margin-top: 15px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      margin: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .btn-live {
+      background: linear-gradient(135deg, #00c16a, #00e68a);
+      border: 2px solid #00ff99;
+      color: #fff;
+    }
+    .btn-live:hover {
+      background: transparent;
+      color: #00ff99;
+      transform: scale(1.07);
+      box-shadow: 0 0 15px #00ff99, 0 0 25px #00c16a;
+    }
+    .btn-code {
+      border: 2px solid #ff4b5c;
+      color: #ff4b5c;
+      background: transparent;
+    }
+    .btn-code:hover {
+      background: linear-gradient(135deg, #ff4b5c, #ff6b7c);
+      color: #fff;
+      transform: scale(1.07);
+      box-shadow: 0 0 15px #ff4b5c, 0 0 25px #ff6b7c;
+    }
+
+
+    .btn-overview {
+      border: 2px solid #00ff99;
+      color: skyblue;
+      background: transparent;
+    }
+    .btn-overview:hover {
+      background: linear-gradient(135deg, #ff4b5c, #ff6b7c);
+      color: green;
+      transform: scale(1.07);
+      box-shadow: 0 0 15px #00ff99, 0 0 25px #00c16a;
+    }
+
+    /* Pagination */
+    .pagination {
+      text-align: center;
+      margin-top: 25px;
+    }
+    .pagination button {
+      background: #2d325c;
+      border: none;
+      padding: 10px 16px;
+      margin: 4px;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .pagination button:hover {
+      background: #3d4472;
+      transform: scale(1.05);
+    }
+    .pagination button.active {
+      background: #00c16a;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00ff99;
+    }
+  </style>
+</head>
+<body>
+  <header>
+
+  <img src="assets/img/logo/Logo-6.png" alt="Project Icon" width="130" height="55">
+  <h3> ❓ Any Query Call :  ☎️ +88 01913 644 908</h3>
+</header>
+
+  <div class="container">
+    <div class="intro">
+      <h2>Clean Code & Responsive Design Project Landing</h2>
+      <p>Show your work with project cards that link to demos, source code, or pages. Replace placeholder links with your real URLs.</p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="categories" id="category-buttons"></div>
+
+    <h2>Projects Live Link and Source</h2>
+    <div class="projects" id="project-list"></div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <script>
+    const projects = [
+
+  { 
+    title:"Furniture eCommerce", 
+    desc:"Modern Furniture eCommerce Website.", 
+    img:"https://cdn-icons-png.flaticon.com/512/5540/5540319.png", // example leather sofa icon 
+    category:"eCommerce",
+    live:"https://maharaz303.github.io/Furniture-eCommerce-Website/",
+    code:"https://github.com/Maharaz303/Furniture-eCommerce-Website.git"
+  }, 
+
+    { 
+    title:"Luxury Shop eCommerce", 
+    desc:"Modern Luxury Shop eCommerce Website.", 
+    img:"https://cdn-icons-png.flaticon.com/512/9018/9018884.png", // example leather sofa icon 
+    category:"eCommerce",
+    live:"https://maharaz303.github.io/Luxury-Shop-Ecommerce-Website/",
+    code:"https://github.com/Maharaz303/Luxury-Shop-Ecommerce-Website"
+  }, 
+
+  {
+    title:"Education Online Training", 
+    desc:"An online education training website.", 
+    img:"https://cdn-icons-png.flaticon.com/512/3135/3135755.png", 
+    category:"Education",
+    live:"https://maharaz303.github.io/Education-Online-Traning/",   // you can replace with your link
+    code:"https://github.com/Maharaz303/Education-Online-Traning.git"
+  },
+
+  { 
+    title:"Landing Page", 
+    desc:"Modern Business & Corporate Website.", 
+    img:"https://cdn-icons-png.flaticon.com/512/3867/3867462.png", 
+    category:"Landing Page",
+    live:"https://maharaz303.github.io/Landing-Website/",   // ✅ your project live link here
+    code:"https://github.com/Maharaz303/Landing-Website.git" // optional code repo
+  },
+  
+
+  { 
+    title:"Healthcare", 
+    desc:"Healthcare Modern website.", 
+    img:"https://cdn-icons-png.flaticon.com/512/3141/3141694.png", 
+    category:"Healthcare",
+    live:"https://maharaz303.github.io/Healthcare-Website/",   // you can replace with your link
+    code:"https://github.com/Maharaz303/Healthcare-Website.git"
+  },
+
+   { 
+    title:"Medi Trust", 
+    desc:"Healthcare Modern website.", 
+    img:"https://cdn-icons-png.flaticon.com/512/387/387562.png", 
+    category:"Healthcare",
+    live:"https://maharaz303.github.io/Medical-Website-MediTrust/",   // you can replace with your link
+    code:"https://github.com/Maharaz303/Medical-Website-MediTrust"
+  },
+
+  { 
+    title:"Real Eastate Business Website", 
+    desc:"Modern Real Eastate Business & Corporate Website.", 
+    img: "https://cdn-icons-png.flaticon.com/512/869/869636.png",
+    category: "Real Estate",
+    live:"https://maharaz303.github.io/Modern-Real-Estate-Business-Website/",   // ✅ your project live link here
+    code:"https://github.com/Maharaz303/Modern-Real-Estate-Business-Website.git" // optional code repo
+  },
+
+  { 
+    title:"Real Eastate Business Website", 
+    desc:"Modern Real Eastate Business & Corporate Website.", 
+    img: "https://cdn-icons-png.flaticon.com/512/942/942089.png",
+    category: "Real Estate",
+    live:"https://maharaz303.github.io/Modern-Real-Estate-Business-Site/",   // ✅ your project live link here
+    code:"https://github.com/Maharaz303/Modern-Real-Estate-Business-Site" // optional code repo
+  },
+
+    { 
+    title:"Real Eastate Business Website", 
+    desc:"Modern Real Eastate Business & Corporate Website.", 
+    img: "https://cdn-icons-png.flaticon.com/512/10364/10364888.png",
+    category: "Real Estate",
+    live:"https://maharaz303.github.io/Real-Estate-Business-Website/",   // ✅ your project live link here
+    code:"https://github.com/Maharaz303/Real-Estate-Business-Website" // optional code repo
+  },
+
+  { 
+    title:"Construction Business Website", 
+    desc:"Modern Construction Business & Corporate Website.", 
+    img: "https://cdn-icons-png.flaticon.com/512/2823/2823525.png",
+    category:"Business & Corporate",
+    live:"https://maharaz303.github.io/Construction-Website/",   // ✅ your project live link here
+    code:"https://github.com/Maharaz303/Construction-Website" // optional code repo
+  },
+
+   { 
+    title:"Restaurant Business Website", 
+    desc:"Modern Restaurant Business & Corporate Website.", 
+    img: "https://cdn-icons-png.flaticon.com/512/737/737967.png",
+    category:"Business & Corporate",
+    live:"https://maharaz303.github.io/Restaurant-Website/",   // ✅ your project live link here
+    code:"https://github.com/Maharaz303/Restaurant-Website" // optional code repo
+  },
+
+
+  { 
+    title:"Website Design Develpment Service", 
+    desc:"Modern Business Website Design and Develpment Service.", 
+    img:"https://cdn-icons-png.flaticon.com/512/9414/9414296.png", 
+    category:"Business & Corporate",
+    live:"https://maharaz303.github.io/Web-Development-Service/",
+    code:"https://github.com/Maharaz303/Web-Development-Service.git"
+  },
+
+   { 
+    title:"Travel and Tour Agency Website", 
+    desc:"Modern Travel and Tour Agency Website Design and Develpment Service.", 
+    img:"https://cdn-icons-png.flaticon.com/512/18395/18395705.png", 
+    category:"Business & Corporate",
+    live:"https://maharaz303.github.io/Travel-and-Tour-Agency-Website/",
+    code:"https://github.com/Maharaz303/Travel-and-Tour-Agency-Website"
+  },
+
+  { 
+    title:"Law Firm Website", 
+    desc:"Modern Law Firm Website Design and Develpment Service.", 
+    img:"https://cdn-icons-png.flaticon.com/512/6744/6744157.png", 
+    category:"Business & Corporate",
+    live:"https://maharaz303.github.io/Law-Firm-Master/",
+    code:"https://github.com/Maharaz303/Law-Firm-Master"
+  },
+
+   { 
+    title:"Law Firm Website", 
+    desc:"Modern Law Firm Website Design and Develpment Service.", 
+    img:"https://cdn-icons-png.flaticon.com/512/10496/10496397.png", 
+    category:"Business & Corporate",
+    live:"https://maharaz303.github.io/Lawyer-and-Law-Firm-Website/",
+    code:"https://github.com/Maharaz303/Lawyer-and-Law-Firm-Website"
+  },
+
+  { 
+    title:"Mental Healthcare Website", 
+    desc:"Modern Mental Health Website", 
+    img: "https://cdn-icons-png.flaticon.com/512/387/387561.png" , 
+    category:"Healthcare",
+    live:"  https://maharaz303.github.io/Mental-Health-Website/ ",
+    code:" https://github.com/Maharaz303/Mental-Health-Website.git "
+  },
+
+  { 
+    title:"Dental Healthcare Website", 
+    desc:"Modern Dental Health Website", 
+    img: "https://cdn-icons-png.flaticon.com/512/11495/11495158.png" , 
+    category:"Healthcare",
+    live:"https://maharaz303.github.io/Dental-Care-Website/",
+    code:"https://github.com/Maharaz303/Dental-Care-Website"
+  },
+
+  { 
+    title:"Hospital Healthcare Website", 
+    desc:"Modern Hospital Website", 
+    img: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png" , 
+    category:"Healthcare",
+    live:"https://maharaz303.github.io/Hospital-Website/",
+    code:"https://github.com/Maharaz303/Hospital-Website"
+  },
+
+
+  { 
+    title:"Landing Page Website", 
+    desc:"Landing Page Insdustrial Services Website", 
+    img: "https://cdn-icons-png.flaticon.com/512/6073/6073873.png", 
+    category:"Landing Page",
+    live:"   https://maharaz303.github.io/Landing-Pages-PrestaShop-Leads/ ",
+    code:"https://github.com/Maharaz303/Landing-Pages-PrestaShop-Leads.git "
+  },
+
+  { 
+    title:"App Landing Page Website", 
+    desc:"Landing Page Mobile App Website", 
+    img: "https://cdn-icons-png.flaticon.com/512/2664/2664669.png", 
+    category:"Landing Page",
+    live:"https://maharaz303.github.io/App-Landing-Page-Website/",
+    code:"https://github.com/Maharaz303/App-Landing-Page-Website"
+  },
+
+  { 
+    title:"Education Learning Website", 
+    desc:"Online Learnign Edicational Website", 
+    img: "https://cdn-icons-png.flaticon.com/512/16811/16811637.png", 
+    category:"Education",
+    live:"https://maharaz303.github.io/Education-Website/",
+    code:"https://github.com/Maharaz303/Education-Website"
+  },
+
+  { 
+    title:"Electronic Store Website", 
+    desc:"Electronic Store eCommerce Business Website", 
+    img: "https://cdn-icons-png.flaticon.com/512/3063/3063822.png", 
+    category:"Business & Corporate",
+    live:"   https://maharaz303.github.io/Electronics-Store-Website/ ",
+    code:"https://github.com/Maharaz303/Electronics-Store-Website.git "
+  },
+
+    { 
+    title:"Education Learning Website", 
+    desc:"Online Learnign Edicational Website", 
+    img: "https://cdn-icons-png.flaticon.com/512/1055/1055646.png", 
+    category:"Education",
+    live:"   https://maharaz303.github.io/Education-Learning-Website-Zilom/",
+    code:"https://github.com/Maharaz303/Education-Learning-Website-Zilom.git "
+  },
+
+  { 
+    title:"Education Learning Website", 
+    desc:"Online Learnign Edicational Website", 
+    img:"https://cdn-icons-png.flaticon.com/512/4729/4729436.png", 
+    category:"Education",
+    live:"https://maharaz303.github.io/Education-Website-Edutim//",
+    code:"https://github.com/Maharaz303/Education-Website-Edutim"
+  },
+
+ { 
+    title:"Education Learning Website", 
+    desc:"Online Learnign Edicational Website", 
+    img:"https://cdn-icons-png.flaticon.com/512/2201/2201570.png", 
+    category:"Education",
+    live:"https://maharaz303.github.io/Education-Website-Sikkha-/",
+    code:"https://github.com/Maharaz303/Education-Website-Sikkha-"
+  },
+  
+  { 
+    title:"Service Website Handyman", 
+    desc:"Services and Mantanance Website Handyman", 
+    img: "https://cdn-icons-png.flaticon.com/512/2276/2276313.png", 
+    category:"Services",
+    live:"https://maharaz303.github.io/Handyman-Website/",
+    code:"https://github.com/Maharaz303/Handyman-Website"
+  },
+
+  // ... rest of projects
+];
+
+
+    const categories = ["All", "Business & Corporate", "eCommerce", "Real Estate", "Landing Page", "Education", "Healthcare", "Services"];
+    const perPage = 4;
+    let currentPage = 1;
+    let selectedCategory = "All";
+
+    function renderCategories() {
+      const categoryContainer = document.getElementById("category-buttons");
+      categoryContainer.innerHTML = "";
+      categories.forEach(cat => {
+        categoryContainer.innerHTML += `
+          <button class="${cat===selectedCategory?'active':''}" onclick="filterCategory('${cat}')">${cat}</button>
+        `;
+      });
+    }
+
+    function getFilteredProjects() {
+      return selectedCategory === "All" ? projects : projects.filter(p => p.category === selectedCategory);
+    }
+
+    function renderProjects() {
+      const filtered = getFilteredProjects();
+      const start = (currentPage - 1) * perPage;
+      const end = start + perPage;
+      const list = document.getElementById("project-list");
+      list.innerHTML = "";
+
+      filtered.slice(start, end).forEach(p => {
+      list.innerHTML += `
+        <div class="card">
+          <img src="${p.img}" alt="${p.title}">
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          <div class="buttons">
+            <a href="${p.live}" target="_blank" class="btn btn-live">Live</a>
+            <a href="${p.code}" target="_blank" class="btn btn-code">Code</a>
+            
+             
+          </div>
+        </div>
+      `;
+    });
+    }
+
+    function renderPagination() {
+      const totalPages = Math.ceil(getFilteredProjects().length / perPage);
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+      for (let i=1; i<=totalPages; i++) {
+        pagination.innerHTML += `<button class="${i===currentPage?'active':''}" onclick="goToPage(${i})">${i}</button>`;
+      }
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      renderProjects();
+      renderPagination();
+    }
+
+    function filterCategory(cat) {
+      selectedCategory = cat;
+      currentPage = 1;
+      renderCategories();
+      renderProjects();
+      renderPagination();
+    }
+
+    // Initialize
+    renderCategories();
+    renderProjects();
+    renderPagination();
+  </script>
+
+  <footer>
+  <img src="assets/img/logo/Logo-6.png" alt="Project Icon" width="130" height="55">
+  <h3>🌐 if Need Customize :📞 +88 01913 644 908</h3>
+</footer>
+
+</body>
+</html>

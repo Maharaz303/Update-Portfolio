@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Project — Landing</title>
+  <meta name="description" content="Project landing page with live links to project pages." />
+  <style>
+    /* Reset + base */
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#16a34a;
+      --glass: rgba(255,255,255,0.04); --glass-2: rgba(255,255,255,0.02);
+      --radius: 14px; --maxw:1100px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background: linear-gradient(180deg, #081226 0%, #071020 60%);
+      color:#e6eef6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      padding:32px 20px;
+      display:flex; justify-content:center;
+      font-size:16px;
+    }
+
+    .container{width:100%; max-width:var(--maxw);}
+
+    /* NAV */
+    header{display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:28px;}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .logo{
+      width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:#062117;font-size:18px;
+      box-shadow: 0 6px 18px rgba(12,20,30,0.6);
+    }
+    nav ul{list-style:none;display:flex;gap:14px;margin:0;padding:0;}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+    nav a:hover{color:#fff;background:var(--glass);}
+
+    .cta{background:linear-gradient(90deg,var(--accent),#10b981); color:#021009; padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none}
+    .hero{
+      display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:center;
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+      padding:28px; border-radius:var(--radius); box-shadow: 0 8px 40px rgba(3,6,12,0.6);
+      border:1px solid rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero h1{font-size:32px;line-height:1.05;margin:0 0 12px}
+    .hero p{color:var(--muted); margin:0 0 18px}
+    .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#022108;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .preview-card{
+      padding:18px;border-radius:12px;background:linear-gradient(180deg,var(--card),#061222);
+      box-shadow: 0 10px 30px rgba(2,6,12,0.6);
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}
+
+    /* Projects grid */
+    section.projects{margin-top:22px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+    .project{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .project:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(2,6,12,0.6)}
+    .project h3{margin:0 0 8px;font-size:18px}
+    .project p{margin:0 0 12px;color:var(--muted);font-size:14px}
+    .project .links{display:flex;gap:8px;align-items:center}
+    .pill{padding:8px 10px;border-radius:9px;font-weight:700;text-decoration:none;font-size:13px}
+    .live{background:linear-gradient(90deg,#06b6d4,var(--accent)); border-color: tomato; color:#021009}
+    .code{background:transparent;border:1px solid rgba(255,255,255,0.05);border-color: tomato; color:var(--muted)}
+
+    /* footer */
+    footer{margin-top:28px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
+    /* responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr; padding:18px}
+      nav ul{display:none}
+      header{align-items:flex-start; flex-direction:column; gap:12px}
+    }
+
+    /* subtle animations */
+    .fade-in{animation:fadeIn .7s ease both}
+    @keyframes fadeIn{from{opacity:0; transform: translateY(6px)} to{opacity:1;transform:none}}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="fade-in">
+      <a class="brand" href="index.html">
+        <div class="logo">M</div>
+        <div>
+          <div style="font-weight:800">My Project</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Live Links</div>
+        </div>
+      </a>
+    </header>
+
+    <main>
+      <section class="hero fade-in" aria-labelledby="hero-title" style="border-color: pink;">
+        <div>
+          <h1 id="hero-title">Clean, responsive project landing — ready to link live pages</h1>
+          <p>Show your work with project cards that link to live demos, source code, or pages. Replace placeholder links with your real URLs for instant live navigation.</p>
+
+          <div class="actions">
+            <a class="btn" href="projects.html">See All Projects</a>
+            <a class="btn secondary" href="about.html">About Me</a>
+          </div>
+
+          <div style="margin-top:16px;color:var(--muted);font-size:13px">
+            Tip: To make a card live, edit the <code>href</code> on the <strong>Live</strong> button for each project.
+          </div>
+        </div>
+
+        <aside class="preview-card">
+          <div class="meta">
+            <div style="font-weight:700">Featured Project</div>
+            <div style="font-size:13px;color:var(--muted)">Demo • Live</div>
+          </div>
+
+          <h3 style="margin-top:6px">Calm UI — Landing Template</h3>
+          <p style="margin:0;color:var(--muted)">A responsive landing template with smooth animations and simple theming. Perfect as starter for client projects.</p>
+
+          <div style="display:flex; gap:8px; margin-top:12px;">
+            <a class="pill live" href="#" target="_blank" rel="noopener" >Live</a>
+            <a class="pill code" href="#" target="_blank" rel="noopener" style="border-color: red;">Source</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="projects" aria-labelledby="projects-heading">
+        <h2 id="projects-heading" style="margin:18px 0 12px">Projects</h2>
+
+        <div class="grid">
+          <!-- Project card 1 -->
+          <article class="project fade-in" style="border-color: skyblue;">
+            <h3>Education Online Traning</h3>
+            <p>An online education training website offers flexible, accessible, and affordable learning opportunities from anywhere.</p>
+            <div class="links">
+              <a class="pill live" href="https://maharaz303.github.io/Education-Online-Traning" target="_blank" rel="noopener">Live</a>
+              <a class="pill code" href="https://github.com/Maharaz303/Education-Online-Traning.git" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Project card 2 -->
+          <article class="project fade-in" style="animation-delay:.05s; border-color: tomato;">
+            <h3>Furniture eCommerce Website</h3>
+            <p>Modern Furniture eCommerce Website Responsive accessible</p>
+            <div class="links">
+              <a class="pill live" href="https://maharaz303.github.io/Furniture-eCommerce-Website" target="_blank" rel="noopener">Live</a>
+              <a class="pill code" href="https://github.com/Maharaz303/Furniture-eCommerce-Website.git" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Project card 3 -->
+          <article class="project fade-in" style="animation-delay:.1s; border-color: greenyellow;">
+            <h3>Landing Page Website</h3>
+            <p>Business Landing Page Website</p>
+            <div class="links">
+              <a class="pill live" href=" https://maharaz303.github.io/Landing-Website/" target="_blank" rel="noopener">Live</a>
+              <a class="pill code" href="https://github.com/Maharaz303/Landing-Website.git" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Project card 4 -->
+          <article class="project fade-in" style="animation-delay:.05s; border-color: tomato;">
+            <h3>Healthcare Website</h3>
+            <p>Modern Healthcare Website with Responsive Design</p>
+            <div class="links">
+              <a class="pill live" href="https://maharaz303.github.io/Healthcare-Website/" target="_blank" rel="noopener">Live</a>
+              <a class="pill code" href="https://github.com/Maharaz303/Healthcare-Website.git" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Add more projects by copying the article block -->
+        </div>
+          <br>
+
+          <div class="grid">
+          <!-- Project card 1 -->
+          <article class="project fade-in" style="border-color: skyblue;">
+            <h3>Education Online Traning</h3>
+            <p>An online education training website offers flexible, accessible, and affordable learning opportunities from anywhere.</p>
+            <div class="links">
+              <a class="pill live" href="https://maharaz303.github.io/Education-Online-Traning" target="_blank" rel="noopener">Live</a>
+              <a class="pill code" href="https://github.com/Maharaz303/Education-Online-Traning.git" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Project card 2 -->
+          <article class="project fade-in" style="animation-delay:.05s; border-color: tomato;">
+            <h3>Furniture eCommerce Website</h3>
+            <p>WordPress site re-design with Elementor and custom blocks (performance optimized).</p>
+            <div class="links">
+              <a class="pill live" href="https://maharaz303.github.io/Furniture-eCommerce-Website" target="_blank" rel="noopener">Live</a>
+              <a class="pill code" href="https://github.com/Maharaz303/Furniture-eCommerce-Website.git" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Project card 3 -->
+          <article class="project fade-in" style="animation-delay:.1s; border-color: greenyellow;">
+            <h3>Project Gamma</h3>
+            <p>REST API + dashboard for internal metrics tracking and alerts.</p>
+            <div class="links">
+              <a class="pill live" href="https://example.com/gamma" target="_blank" rel="noopener">Live</a>
+              <a class="pill code" href="https://github.com/username/gamma" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Project card 4 -->
+          <article class="project fade-in" style="animation-delay:.05s; border-color: tomato;">
+            <h3>Project Beta</h3>
+            <p>WordPress site re-design with Elementor and custom blocks (performance optimized).</p>
+            <div class="links">
+              <a class="pill live" href="https://example.com/beta" target="_blank" rel="noopener">Live</a>
+              <a class="pill code" href="https://github.com/username/beta" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+
+          <!-- Add more projects by copying the article block -->
+        </div>
+
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> MyProject — Built by you. Replace links with your real URLs.</div>
+      <div style="color:var(--muted)"><a style="color:var(--muted);text-decoration:none" href="contact.html">Contact</a> • <a style="color:var(--muted);text-decoration:none" href="projects.html">All Projects</a></div>
+    </footer>
+  </div>
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // keyboard accessible focus for "Live" links if user navigates
+    const liveLinks = document.querySelectorAll('.pill.live');
+    liveLinks.forEach(a => {
+      a.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' ') a.click();
+      });
+    });
+  </script>
+</body>
+</html>
